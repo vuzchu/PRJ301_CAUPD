@@ -10,7 +10,7 @@ import java.sql.Date;
  *
  * @author vu
  */
-public class Product {
+public class products {
 
     private int product_id;
     private String product_name;
@@ -19,10 +19,10 @@ public class Product {
     private String brand_name;
     private String category_name;
 
-    public Product() {
+    public products() {
     }
 
-    public Product(int product_id, String product_name, Date model_year, int list_price, String brand_name, String category_name) {
+    public products(int product_id, String product_name, Date model_year, int list_price, String brand_name, String category_name) {
         this.product_id = product_id;
         this.product_name = product_name;
         this.model_year = model_year;
@@ -83,6 +83,5 @@ public class Product {
     public String toString() {
         return "Product{" + "product_id=" + product_id + ", product_name=" + product_name + ", model_year=" + model_year + ", list_price=" + list_price + ", brand_name=" + brand_name + ", category_name=" + category_name + '}';
     }
-    
 
 }
