@@ -276,7 +276,8 @@
                                         <c:forEach items="${products}" var="p">
                                             <div class="product">
                                                 <div class="product-img">
-                                                    <img src="${p.image}" alt="">
+                                                    ${p.image}
+                                                    <img src="" alt="">
                                                     <!--												<div class="product-label">
                                                                                                                                                             <span class="sale"></span>
                                                                                                                                                             <span class=""></span>
@@ -305,9 +306,9 @@
                                             </div>
                                             <!-- /product -->
                                         </c:forEach>
-                                            
-                                            
-                                            
+
+
+
                                         <!-- product -->
                                         <div class="product">
                                             <div class="product-img">
