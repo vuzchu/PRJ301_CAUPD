@@ -189,57 +189,53 @@
         <!-- /NAVIGATION -->
 
         <!-- SECTION -->
-        <!--		<div class="section">
-                                 container 
-                                <div class="container">
-                                         row 
-                                        <div class="row">
-                                                 shop 
-                                                <div class="col-md-4 col-xs-6">
-                                                        <div class="shop">
-                                                                <div class="shop-img">
-                                                                        <img src="./img/shop01.png" alt="">
-                                                                </div>
-                                                                <div class="shop-body">
-                                                                        <h3>Laptop<br>Collection</h3>
-                                                                        <a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
-                                                                </div>
-                                                        </div>
-                                                </div>
-                                                 /shop 
-        
-                                                 shop 
-                                                <div class="col-md-4 col-xs-6">
-                                                        <div class="shop">
-                                                                <div class="shop-img">
-                                                                        <img src="./img/shop03.png" alt="">
-                                                                </div>
-                                                                <div class="shop-body">
-                                                                        <h3>Accessories<br>Collection</h3>
-                                                                        <a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
-                                                                </div>
-                                                        </div>
-                                                </div>
-                                                 /shop 
-        
-                                                 shop 
-                                                <div class="col-md-4 col-xs-6">
-                                                        <div class="shop">
-                                                                <div class="shop-img">
-                                                                        <img src="./img/shop02.png" alt="">
-                                                                </div>
-                                                                <div class="shop-body">
-                                                                        <h3>Cameras<br>Collection</h3>
-                                                                        <a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
-                                                                </div>
-                                                        </div>
-                                                </div>
-                                                 /shop 
-                                        </div>
-                                         /row 
-                                </div>
-                                 /container 
-                        </div>-->
+        <div class="section">
+         
+            <div class="container">
+                 
+                <div class="row">
+                   
+                    <div class="col-md-4 col-xs-6">
+                        <div class="shop">
+                            <div class="shop-img">
+                                <img src="./img/shop01.png" alt="">
+                            </div>
+                            <div class="shop-body">
+                                <h3>Laptop<br>Collection</h3>
+                                <a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4 col-xs-6">
+                        <div class="shop">
+                            <div class="shop-img">
+                                <img src="./img/shop03.png" alt="">
+                            </div>
+                            <div class="shop-body">
+                                <h3>Accessories<br>Collection</h3>
+                                <a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                  
+                    <div class="col-md-4 col-xs-6">
+                        <div class="shop">
+                            <div class="shop-img">
+                                <img src="./img/shop02.png" alt="">
+                            </div>
+                            <div class="shop-body">
+                                <h3>Cameras<br>Collection</h3>
+                                <a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
         <!-- /SECTION -->
 
         <!-- SECTION -->
@@ -897,28 +893,23 @@
                     <div class="row">
                         <div class="col-md-3 col-xs-6">
                             <div class="footer">
-                                <c:forEach items="${products}" var="p">
-                                <h3 class="footer-title">About Us</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
-                                <ul class="footer-links">
-                                    <li><a href="#"><i class="fa fa-map-marker"></i>1734 Stonecoal Road</a></li>
-                                    <li><a href="#"><i class="fa fa-phone"></i>+021-95-51-84</a></li>
-                                    <li><a href="#"><i class="fa fa-envelope-o"></i>email@email.com</a></li>
-                                </ul>
-                            </div>
-                                </c:forEach>
+                                <c:forEach items="${stores}" var="s">
+                                    <h3 class="footer-title">About Us</h3>
+                                    <p>${s.store_name}</p>
+                                    <ul class="footer-links">
+                                        <li><a href="#"><i class="fa fa-map-marker"></i>${s.street} ,${s.city}</a></li>
+                                        <li><a href="#"><i class="fa fa-phone"></i>${s.phone}</a></li>
+                                        <li><a href="#"><i class="fa fa-envelope-o"></i>${s.email}</a></li>
+                                    </ul>
+                                </div>
+                            </c:forEach>
                         </div>
 
                         <div class="col-md-3 col-xs-6">
                             <div class="footer">
                                 <h3 class="footer-title">Categories</h3>
                                 <ul class="footer-links">
-                                    <li><a href="#">Hot deals</a></li>
-                                    <li><a href="#">Laptops</a></li>
-                                    <li><a href="#">Smartphones</a></li>
-                                    <li><a href="#">Cameras</a></li>
-                                    <li><a href="#">Accessories</a></li>
-                                </ul>
+
                             </div>
                         </div>
 

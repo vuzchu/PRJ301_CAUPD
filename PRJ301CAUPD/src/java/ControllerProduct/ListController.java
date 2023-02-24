@@ -2,9 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package Controller;
+package ControllerProduct;
 
-import dal.productsDBContext;
+import dal.ProductsDBContext;
+import dal.StoreDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -13,6 +14,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import model.products;
+import model.stores;
 
 /**
  *
@@ -58,9 +60,13 @@ public class ListController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        productsDBContext db = new productsDBContext();
+        ProductsDBContext db = new ProductsDBContext();
         ArrayList<products> list = db.list();
         request.setAttribute("products", list);
+
+        StoreDBContext db1 = new StoreDBContext();
+        ArrayList<stores> stores = db1.getAllStores();
+        request.setAttribute("stores", stores);
         request.getRequestDispatcher("list.jsp").forward(request, response);
     }
 

@@ -13,7 +13,7 @@ import model.products;
  *
  * @author vu
  */
-public class productsDBContext extends DBContext {
+public class ProductsDBContext extends DBContext {
 
     public ArrayList<products> list() {
         ArrayList<products> products = new ArrayList<>();
