@@ -4,6 +4,7 @@
  */
 package model;
 
+import java.math.BigDecimal;
 import java.sql.Date;
 
 /**
@@ -14,20 +15,20 @@ public class products {
 
     private int product_id;
     private String product_name;
-    private Date model_year;
-    private int list_price;
-    private String brand_name;
+    private double price;
+    private String description;
+    private String image;
     private String category_name;
 
     public products() {
     }
 
-    public products(int product_id, String product_name, Date model_year, int list_price, String brand_name, String category_name) {
+    public products(int product_id, String product_name, double price, String description, String image, String category_name) {
         this.product_id = product_id;
         this.product_name = product_name;
-        this.model_year = model_year;
-        this.list_price = list_price;
-        this.brand_name = brand_name;
+        this.price = price;
+        this.description = description;
+        this.image = image;
         this.category_name = category_name;
     }
 
@@ -47,28 +48,28 @@ public class products {
         this.product_name = product_name;
     }
 
-    public Date getModel_year() {
-        return model_year;
+    public double getPrice() {
+        return price;
     }
 
-    public void setModel_year(Date model_year) {
-        this.model_year = model_year;
+    public void setPrice(double price) {
+        this.price = price;
     }
 
-    public int getList_price() {
-        return list_price;
+    public String getDescription() {
+        return description;
     }
 
-    public void setList_price(int list_price) {
-        this.list_price = list_price;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getBrand_name() {
-        return brand_name;
+    public String getImage() {
+        return image;
     }
 
-    public void setBrand_name(String brand_name) {
-        this.brand_name = brand_name;
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getCategory_name() {
@@ -81,7 +82,7 @@ public class products {
 
     @Override
     public String toString() {
-        return "Product{" + "product_id=" + product_id + ", product_name=" + product_name + ", model_year=" + model_year + ", list_price=" + list_price + ", brand_name=" + brand_name + ", category_name=" + category_name + '}';
+        return "products{" + "product_id=" + product_id + ", product_name=" + product_name + ", price=" + price + ", description=" + description + ", image=" + image + ", category_name=" + category_name + '}';
     }
 
 }
