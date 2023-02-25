@@ -124,4 +124,42 @@ public class ProductsDBContext extends DBContext {
         return null;
 
     }
+
+    public ArrayList<Product> searchAllProductByProductName(String product_name) {
+        ArrayList<Product> products = new ArrayList<>();
+
+        try {
+            String sql = "SELECT [product__id]\n"
+                    + "      ,[product_name]\n"
+                    + "      ,[price]\n"
+                    + "      ,[description]\n"
+                    + "      ,[image]\n"
+                    + "      ,[cid]\n"
+                    + "  FROM [dbo].[products] where product_name like ?";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setString(1, product_name);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                Product s = new Product();
+                int product__id = rs.getInt("product__id");
+//                String product_name = rs.getString("product_name");
+                Double price = rs.getDouble("price");
+                String description = rs.getString("description");
+                String image = rs.getString("image");
+
+                s.setProduct_id(product__id);
+//                s.setProduct_name(product_name);
+                s.setPrice(price);
+                s.setDescription(description);
+                s.setImage(image);
+
+                products.add(s);
+            }
+        } catch (Exception e) {
+
+        }
+        return products;
+
+    }
+
 }
