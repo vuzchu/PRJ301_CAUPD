@@ -4,7 +4,6 @@
  */
 package ControllerProduct;
 
-import dal.CategoryDBContext;
 import dal.ProductsDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,15 +11,13 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import model.category;
 import model.Product;
 
 /**
  *
  * @author vu
  */
-public class CategoryController extends HttpServlet {
+public class detailController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,18 +31,11 @@ public class CategoryController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet CategoryController</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet CategoryController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        ProductsDBContext db = new ProductsDBContext();
+        int product_id = Integer.parseInt(request.getParameter("product_id"));
+        Product detail = db.getProductByProductID(product_id);
+        request.setAttribute("detail", detail);
+        request.getRequestDispatcher("detail.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -60,16 +50,7 @@ public class CategoryController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int cid = Integer.parseInt(request.getParameter("cid"));
-        ProductsDBContext pdc = new ProductsDBContext();
-        ArrayList<Product> products = pdc.getAllProductByCID(cid);
-        request.setAttribute("products", products);
-
-        CategoryDBContext dbc = new CategoryDBContext();
-        ArrayList<category> category = dbc.getAllCategory();
-        request.setAttribute("category", category);
-
-        request.getRequestDispatcher("list.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**

@@ -11,7 +11,7 @@ import java.sql.Date;
  *
  * @author vu
  */
-public class products {
+public class Product {
 
     private int product_id;
     private String product_name;
@@ -20,10 +20,10 @@ public class products {
     private String image;
    
 
-    public products() {
+    public Product() {
     }
 
-    public products(int product_id, String product_name, double price, String description, String image) {
+    public Product(int product_id, String product_name, double price, String description, String image) {
         this.product_id = product_id;
         this.product_name = product_name;
         this.price = price;

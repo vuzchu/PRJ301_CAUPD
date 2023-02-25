@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import model.category;
-import model.products;
+import model.Product;
 
 /**
  *
@@ -16,8 +16,8 @@ import model.products;
  */
 public class ProductsDBContext extends DBContext {
 
-    public ArrayList<products> list() {
-        ArrayList<products> products = new ArrayList<>();
+    public ArrayList<Product> list() {
+        ArrayList<Product> products = new ArrayList<>();
 
         try {
             String sql = "SELECT [product__id]\n"
@@ -29,7 +29,7 @@ public class ProductsDBContext extends DBContext {
             PreparedStatement stm = connection.prepareStatement(sql);
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {
-                products s = new products();
+                Product s = new Product();
                 int product__id = rs.getInt("product__id");
                 String product_name = rs.getString("product_name");
                 Double price = rs.getDouble("price");
@@ -51,8 +51,8 @@ public class ProductsDBContext extends DBContext {
 
     }
 
-    public ArrayList<products> getAllProductByCID(int cid) {
-        ArrayList<products> products = new ArrayList<>();
+    public ArrayList<Product> getAllProductByCID(int cid) {
+        ArrayList<Product> products = new ArrayList<>();
 
         try {
             String sql = "SELECT [product__id]\n"
@@ -65,7 +65,7 @@ public class ProductsDBContext extends DBContext {
             stm.setInt(1, cid);
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {
-                products s = new products();
+                Product s = new Product();
                 int product__id = rs.getInt("product__id");
                 String product_name = rs.getString("product_name");
                 Double price = rs.getDouble("price");
@@ -84,6 +84,44 @@ public class ProductsDBContext extends DBContext {
 
         }
         return products;
+
+    }
+
+    public Product getProductByProductID(int product_id) {
+
+        try {
+            String sql = "SELECT [product__id]\n"
+                    + "      ,[product_name]\n"
+                    + "      ,[price]\n"
+                    + "      ,[description]\n"
+                    + "      ,[image]\n"
+                    + "      ,[cid]\n"
+                    + "  FROM [dbo].[products]\n"
+                    + "where [product__id]=?";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setInt(1, product_id);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                Product s = new Product();
+                int product__id = rs.getInt("product__id");
+                String product_name = rs.getString("product_name");
+                Double price = rs.getDouble("price");
+                String description = rs.getString("description");
+                String image = rs.getString("image");
+
+                s.setProduct_id(product__id);
+                s.setProduct_name(product_name);
+                s.setPrice(price);
+                s.setDescription(description);
+                s.setImage(image);
+
+                return s;
+//                Product.add(s);
+            }
+        } catch (Exception e) {
+
+        }
+        return null;
 
     }
 }

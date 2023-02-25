@@ -15,7 +15,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import model.category;
-import model.products;
+import model.Product;
 import model.stores;
 
 /**
@@ -63,7 +63,7 @@ public class ListController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ProductsDBContext db = new ProductsDBContext();
-        ArrayList<products> list = db.list();
+        ArrayList<Product> list = db.list();
         request.setAttribute("products", list);
 
         StoreDBContext db1 = new StoreDBContext();
