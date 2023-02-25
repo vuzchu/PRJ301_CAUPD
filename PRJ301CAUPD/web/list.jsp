@@ -172,13 +172,10 @@
                 <div id="responsive-nav">
                     <!-- NAV -->
                     <ul class="main-nav nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#">Hot Deals</a></li>
-                        <li><a href="#">Categories</a></li>
-                        <li><a href="#">Laptops</a></li>
-                        <li><a href="#">Smartphones</a></li>
-                        <li><a href="#">Cameras</a></li>
-                        <li><a href="#">Accessories</a></li>
+                        <li class="active"><a href="list">Home</a></li>
+                            <c:forEach items="${category}" var="c">
+                            <li><a href="category?cid=${c.cid}">${c.cname}</a></li>
+                            </c:forEach>
                     </ul>
                     <!-- /NAV -->
                 </div>
@@ -189,53 +186,7 @@
         <!-- /NAVIGATION -->
 
         <!-- SECTION -->
-        <div class="section">
-         
-            <div class="container">
-                 
-                <div class="row">
-                   
-                    <div class="col-md-4 col-xs-6">
-                        <div class="shop">
-                            <div class="shop-img">
-                                <img src="./img/shop01.png" alt="">
-                            </div>
-                            <div class="shop-body">
-                                <h3>Laptop<br>Collection</h3>
-                                <a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-md-4 col-xs-6">
-                        <div class="shop">
-                            <div class="shop-img">
-                                <img src="./img/shop03.png" alt="">
-                            </div>
-                            <div class="shop-body">
-                                <h3>Accessories<br>Collection</h3>
-                                <a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                  
-                    <div class="col-md-4 col-xs-6">
-                        <div class="shop">
-                            <div class="shop-img">
-                                <img src="./img/shop02.png" alt="">
-                            </div>
-                            <div class="shop-body">
-                                <h3>Cameras<br>Collection</h3>
-                                <a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
 
-                </div>
-
-            </div>
-
-        </div>
         <!-- /SECTION -->
 
         <!-- SECTION -->
@@ -250,12 +201,11 @@
                         <div class="section-title">
                             <h3 class="title">New Products</h3>
                             <div class="section-nav">
+
                                 <ul class="section-tab-nav tab-nav">
-                                    <li class="active"><a data-toggle="tab" href="#tab1">Laptops</a></li>
-                                    <li><a data-toggle="tab" href="#tab1">Smartphones</a></li>
-                                    <li><a data-toggle="tab" href="#tab1">Cameras</a></li>
-                                    <li><a data-toggle="tab" href="#tab1">Accessories</a></li>
+                                    <li class=""><a href=""></a></li>
                                 </ul>
+
                             </div>
                         </div>
                     </div>
@@ -277,9 +227,9 @@
 
                                                 </div>
                                                 <div class="product-body">
-                                                    <p class="product-category">${p.category_name}</p>
+                                                    <p class="product-category">category</p>
                                                     <h3 class="product-name"><a href="#">${p.product_name}</a></h3>
-                                                    <h4 class="product-price">${p.price}</h4>
+                                                    <h4 class="product-price">${p.price} </h4>
                                                     <div class="product-rating">
                                                         <i class="fa fa-star"></i>
                                                         <i class="fa fa-star"></i>

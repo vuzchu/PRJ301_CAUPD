@@ -6,7 +6,6 @@ package ControllerProduct;
 
 import dal.CategoryDBContext;
 import dal.ProductsDBContext;
-import dal.StoreDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -16,13 +15,12 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import model.category;
 import model.products;
-import model.stores;
 
 /**
  *
  * @author vu
  */
-public class ListController extends HttpServlet {
+public class CategoryController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,10 +39,10 @@ public class ListController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ListController</title>");
+            out.println("<title>Servlet CategoryController</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ListController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet CategoryController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -62,20 +60,15 @@ public class ListController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ProductsDBContext db = new ProductsDBContext();
-        ArrayList<products> list = db.list();
-        request.setAttribute("products", list);
+        int cid = Integer.parseInt(request.getParameter("cid"));
+        ProductsDBContext pdc = new ProductsDBContext();
+        ArrayList<products> products = pdc.getAllProductByCID(cid);
+        request.setAttribute("products", products);
 
-        StoreDBContext db1 = new StoreDBContext();
-        ArrayList<stores> stores = db1.getAllStores();
-        request.setAttribute("stores", stores);
-        
         CategoryDBContext dbc = new CategoryDBContext();
         ArrayList<category> category = dbc.getAllCategory();
         request.setAttribute("category", category);
-        
-        
-        
+
         request.getRequestDispatcher("list.jsp").forward(request, response);
     }
 
