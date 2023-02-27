@@ -49,8 +49,20 @@
                         <li><a href="#"><i class="fa fa-map-marker"></i> Thanh Xuan , Ha Noi</a></li>
                     </ul>
                     <ul class="header-links pull-right">
-                        <li><a href="login.jsp">Login</a></li>
-                        <li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
+
+                        <c:if test="${sessionScope.account == null}">
+                            <li><a href="login.jsp">Login</a></li>
+                            </c:if>
+
+                        <c:if test="${sessionScope.account != null}">
+                            <li><a href="login.jsp">Logout</a></li>
+                            </c:if>
+
+
+
+                        <c:if test="${sessionScope.account != null}">
+                            <li><a href="#"><i class="fa fa-user-o"></i>${account.user}</a></li>
+                                </c:if>
                     </ul>
                 </div>
             </div>
@@ -357,7 +369,7 @@
 
                                                 </div>
                                                 <div class="product-body">
-                                                    <p class="product-category">category</p>
+                                                    <!--                                                    <p class="product-category">category</p>-->
 
                                                     <h3 class="product-name"><a href="detail?product_id=${p.product_id}" aria-label="${p.product_name}">${p.product_name}</a></h3>
 
@@ -417,85 +429,28 @@
                         <div class="products-widget-slick" data-nav="#slick-nav-3">
                             <div>
                                 <!-- product widget -->
-                                <div class="product-widget">
-                                    <div class="product-img">
-                                        <img src="./img/product07.png" alt="">
+                                <c:forEach items="${products}" var="p" begin="1" end ="3">
+                                    <div class="product-widget">
+
+                                        <div class="product-img">
+                                            <img src="${p.image}" alt="">
+                                        </div>
+                                        <div class="product-body">
+                                            <!--                                            <p class="product-category">Category</p>-->
+                                            <h3 class="product-name"><a href="#">product name goes here</a></h3>
+                                            <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                                        </div>
+
                                     </div>
-                                    <div class="product-body">
-                                        <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                    </div>
-                                </div>
+                                </c:forEach>
                                 <!-- /product widget -->
 
-                                <!-- product widget -->
-                                <div class="product-widget">
-                                    <div class="product-img">
-                                        <img src="./img/product08.png" alt="">
-                                    </div>
-                                    <div class="product-body">
-                                        <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                    </div>
-                                </div>
-                                <!-- /product widget -->
 
-                                <!-- product widget -->
-                                <div class="product-widget">
-                                    <div class="product-img">
-                                        <img src="./img/product09.png" alt="">
-                                    </div>
-                                    <div class="product-body">
-                                        <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                    </div>
-                                </div>
-                                <!-- product widget -->
+
+
                             </div>
 
-                            <div>
-                                <!-- product widget -->
-                                <div class="product-widget">
-                                    <div class="product-img">
-                                        <img src="./img/product01.png" alt="">
-                                    </div>
-                                    <div class="product-body">
-                                        <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                    </div>
-                                </div>
-                                <!-- /product widget -->
 
-                                <!-- product widget -->
-                                <div class="product-widget">
-                                    <div class="product-img">
-                                        <img src="./img/product02.png" alt="">
-                                    </div>
-                                    <div class="product-body">
-                                        <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                    </div>
-                                </div>
-                                <!-- /product widget -->
-
-                                <!-- product widget -->
-                                <div class="product-widget">
-                                    <div class="product-img">
-                                        <img src="./img/product03.png" alt="">
-                                    </div>
-                                    <div class="product-body">
-                                        <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                        <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                    </div>
-                                </div>
-                                <!-- product widget -->
-                            </div>
                         </div>
                     </div>
 

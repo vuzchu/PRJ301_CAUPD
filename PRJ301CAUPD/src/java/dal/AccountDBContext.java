@@ -33,6 +33,7 @@ public class AccountDBContext extends DBContext {
                 int isAdmin = rs.getInt("isAdmin");
                 int isSell = rs.getInt("isSell");
 
+                a.setUid(uid);
                 a.setUser(user);
                 a.setPass(pass);
                 a.setIsAdmin(isAdmin);
@@ -45,6 +46,9 @@ public class AccountDBContext extends DBContext {
         return null;
     }
 
+    
+    
+    
     public static void main(String[] args) {
         Account account = new Account();
         AccountDBContext adb = new AccountDBContext();

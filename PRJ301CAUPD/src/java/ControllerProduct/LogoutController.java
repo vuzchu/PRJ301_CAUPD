@@ -4,7 +4,6 @@
  */
 package ControllerProduct;
 
-import dal.AccountDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -12,13 +11,12 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import model.Account;
 
 /**
  *
  * @author vu
  */
-public class LoginController extends HttpServlet {
+public class LogoutController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,6 +29,11 @@ public class LoginController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession();
+        session.removeAttribute("account");
+        response.sendRedirect("login");
+        return;
 
     }
 
@@ -47,7 +50,6 @@ public class LoginController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        request.getRequestDispatcher("login.jsp").forward(request, response);
     }
 
     /**
@@ -61,22 +63,7 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String user = request.getParameter("user");
-        String pass = request.getParameter("pass");
-
-        AccountDBContext adb = new AccountDBContext();
-        Account account = adb.login(user, pass);
-        if (account == null) {
-
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-
-            return;
-        } else {
-            HttpSession session = request.getSession();
-            session.setAttribute("account", account);
-            response.sendRedirect("list");
-
-        }
+        processRequest(request, response);
     }
 
     /**
