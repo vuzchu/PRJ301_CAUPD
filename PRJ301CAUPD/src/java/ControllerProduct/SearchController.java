@@ -32,15 +32,7 @@ public class SearchController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String product_name = request.getParameter("product_name");
-        ProductsDBContext pdb = new ProductsDBContext();
 
-        if (product_name != null) {
-
-            ArrayList<Product> products = pdb.searchAllProductByProductName("%" + product_name + "%");
-            request.setAttribute("products", products);
-        }
-        request.getRequestDispatcher("list.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -69,7 +61,13 @@ public class SearchController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String product_name = request.getParameter("product_name");
+        ProductsDBContext pdb = new ProductsDBContext();
+
+        ArrayList<Product> p1 = pdb.searchAllProductByProductName("%" + product_name + "%");
+        request.setAttribute("products", p1);
+
+        request.getRequestDispatcher("list.jsp").forward(request, response);
     }
 
     /**

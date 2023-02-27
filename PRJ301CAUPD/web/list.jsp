@@ -49,7 +49,7 @@
                         <li><a href="#"><i class="fa fa-map-marker"></i> Thanh Xuan , Ha Noi</a></li>
                     </ul>
                     <ul class="header-links pull-right">
-                        <li><a href="#"><i class="fa fa-dollar"></i> USD</a></li>
+                        <li><a href="login.jsp">Login</a></li>
                         <li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
                     </ul>
                 </div>
@@ -213,9 +213,11 @@
                         <div class="row">
                             <div class="products-tabs">
                                 <!-- tab -->
+
                                 <div id="tab1" class="tab-pane active">
                                     <div class="products-slick" data-nav="#slick-nav-1">
                                         <!-- product -->
+
                                         <c:forEach items="${products}" var="p">
                                             <div class="product">
                                                 <div class="product-img">
@@ -245,14 +247,16 @@
                                                 </div>
                                             </div>
                                             <!-- /product -->
-                                        </c:forEach>
 
+                                        </c:forEach>
 
 
                                         <!-- /product -->
                                     </div>
+
                                     <div id="slick-nav-1" class="products-slick-nav"></div>
                                 </div>
+
                                 <!-- /tab -->
                             </div>
                         </div>

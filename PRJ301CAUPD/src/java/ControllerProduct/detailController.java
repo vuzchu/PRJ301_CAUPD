@@ -31,10 +31,13 @@ public class detailController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
         ProductsDBContext db = new ProductsDBContext();
         int product_id = Integer.parseInt(request.getParameter("product_id"));
+        
         Product detail = db.getProductByProductID(product_id);
         request.setAttribute("detail", detail);
+        
         request.getRequestDispatcher("detail.jsp").forward(request, response);
     }
 
