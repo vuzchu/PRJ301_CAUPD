@@ -4,21 +4,20 @@
  */
 package ControllerProduct;
 
-import dal.ProductsDBContext;
+import dal.AccountDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import model.Product;
+import model.Account;
 
 /**
  *
  * @author vu
  */
-public class SearchController extends HttpServlet {
+public class LoginController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,7 +30,6 @@ public class SearchController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
 
     }
 
@@ -48,6 +46,7 @@ public class SearchController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        request.getRequestDispatcher("login.jsp").forward(request, response);
     }
 
     /**
@@ -61,13 +60,20 @@ public class SearchController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String product_name = request.getParameter("product_name");
-        ProductsDBContext pdb = new ProductsDBContext();
+        String user = request.getParameter("user");
+        String pass = request.getParameter("pass");
 
-        ArrayList<Product> products = pdb.searchAllProductByProductName("%" + product_name + "%");
-        request.setAttribute("products", products);
+        AccountDBContext adb = new AccountDBContext();
+        Account a = adb.login(user, pass);
+        if (a == null) {
+      
+            request.getRequestDispatcher("list.jsp").forward(request, response);
 
-        request.getRequestDispatcher("list.jsp").forward(request, response);
+        } else {
+
+            response.sendRedirect("list");
+
+        }
     }
 
     /**

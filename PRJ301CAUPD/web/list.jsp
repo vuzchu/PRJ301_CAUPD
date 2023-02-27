@@ -227,8 +227,10 @@
                                                 </div>
                                                 <div class="product-body">
                                                     <p class="product-category">category</p>
-                                                    <h3 class="product-name"><a href="detail?product_id=${p.product_id}">${p.product_name}</a></h3>
-                                                    <h4 class="product-price">${p.price} </h4>
+
+                                                    <h3 class="product-name"><a href="detail?product_id=${p.product_id}" aria-label="${p.product_name}">${p.product_name}</a></h3>
+
+                                                    <h4 class="product-price">${p.price}</h4>
                                                     <div class="product-rating">
                                                         <i class="fa fa-star"></i>
                                                         <i class="fa fa-star"></i>

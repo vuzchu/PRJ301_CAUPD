@@ -142,13 +142,13 @@ public class ProductsDBContext extends DBContext {
             while (rs.next()) {
                 Product s = new Product();
                 int product__id = rs.getInt("product__id");
-//                String product_name = rs.getString("product_name");
+                String name = rs.getString("product_name");
                 Double price = rs.getDouble("price");
                 String description = rs.getString("description");
                 String image = rs.getString("image");
 
                 s.setProduct_id(product__id);
-//                s.setProduct_name(product_name);
+                s.setProduct_name(name);
                 s.setPrice(price);
                 s.setDescription(description);
                 s.setImage(image);
