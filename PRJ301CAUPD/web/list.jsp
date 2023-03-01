@@ -238,7 +238,7 @@
 
                                                 </div>
                                                 <div class="product-body">
-                                                    <p class="product-category">category</p>
+                                                    <p class="product-category"></p>x
 
                                                     <h3 class="product-name"><a href="detail?product_id=${p.product_id}" aria-label="${p.product_name}">${p.product_name}</a></h3>
 
@@ -709,9 +709,11 @@
 
                         <div class="col-md-3 col-xs-6">
                             <div class="footer">
+
                                 <h3 class="footer-title">Categories</h3>
                                 <ul class="footer-links">
-
+                                  
+                                </ul>
                             </div>
                         </div>
 
