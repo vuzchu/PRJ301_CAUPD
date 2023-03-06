@@ -61,7 +61,14 @@
 
 
                         <c:if test="${sessionScope.account != null}">
-                            <li><a href="#"><i class="fa fa-user-o"></i>${account.user}</a></li>
+                            <li><a href="#"><i class="fa fa-user-o"></i>${account.user}</a></li>                            
+                                </c:if>
+                            
+                             <c:if test="${sessionScope.account.isSell == 1}">
+                            <li><a href="#"><i class="fa fa-user-o"></i>Manager Product</a></li>                            
+                                </c:if>
+                             <c:if test="${sessionScope.account.isAdmin == 1}">
+                            <li><a href="#"><i class="fa fa-user-o"></i>Manager Account</a></li>                            
                                 </c:if>
                     </ul>
                 </div>
@@ -238,7 +245,7 @@
 
                                                 </div>
                                                 <div class="product-body">
-                                                    <p class="product-category"></p>x
+                                                    <p class="product-category"></p>
 
                                                     <h3 class="product-name"><a href="detail?product_id=${p.product_id}" aria-label="${p.product_name}">${p.product_name}</a></h3>
 
@@ -339,13 +346,10 @@
                     <!-- section title -->
                     <div class="col-md-12">
                         <div class="section-title">
-                            <h3 class="title">Top selling</h3>
+                            <h3 class="title"></h3>
                             <div class="section-nav">
                                 <ul class="section-tab-nav tab-nav">
-                                    <li class="active"><a data-toggle="tab" href="#tab2">Laptops</a></li>
-                                    <li><a data-toggle="tab" href="#tab2">Smartphones</a></li>
-                                    <li><a data-toggle="tab" href="#tab2">Cameras</a></li>
-                                    <li><a data-toggle="tab" href="#tab2">Accessories</a></li>
+                                    
                                 </ul>
                             </div>
                         </div>
@@ -710,7 +714,6 @@
                         <div class="col-md-3 col-xs-6">
                             <div class="footer">
 
-                                <h3 class="footer-title">Categories</h3>
                                 <ul class="footer-links">
                                   
                                 </ul>

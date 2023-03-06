@@ -161,5 +161,36 @@ public class ProductsDBContext extends DBContext {
         return products;
 
     }
+    
+     public ArrayList<Product> getAllProductBySellId(int sell_id) {
+        ArrayList<Product> products = new ArrayList<>();
+
+        try {
+            String sql = "select * from Product where sell_id =?";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setInt(1, sell_id);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                Product s = new Product();
+                int product__id = rs.getInt("product__id");
+                String product_name = rs.getString("product_name");
+                Double price = rs.getDouble("price");
+                String description = rs.getString("description");
+                String image = rs.getString("image");
+
+                s.setProduct_id(product__id);
+                s.setProduct_name(product_name);
+                s.setPrice(price);
+                s.setDescription(description);
+                s.setImage(image);
+
+                products.add(s);
+            }
+        } catch (Exception e) {
+
+        }
+        return products;
+
+    }
 
 }
