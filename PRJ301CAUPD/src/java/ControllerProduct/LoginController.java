@@ -74,6 +74,7 @@ public class LoginController extends HttpServlet {
         } else {
             HttpSession session = request.getSession();
             session.setAttribute("account", account);
+//            session.setMaxInactiveInterval(1000);
             response.sendRedirect("list");
 
         }

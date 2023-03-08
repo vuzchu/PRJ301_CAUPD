@@ -59,15 +59,15 @@
                             </c:if>
 
 
-
                         <c:if test="${sessionScope.account != null}">
                             <li><a href="#"><i class="fa fa-user-o"></i>${account.user}</a></li>                            
                                 </c:if>
-                            
-                             <c:if test="${sessionScope.account.isSell == 1}">
-                            <li><a href="#"><i class="fa fa-user-o"></i>Manager Product</a></li>                            
+
+                        <c:if test="${sessionScope.account.isSell == 1}">
+                            <li><a href="manager">Manager Product</a></li>                            
                                 </c:if>
-                             <c:if test="${sessionScope.account.isAdmin == 1}">
+
+                        <c:if test="${sessionScope.account.isAdmin == 1}">
                             <li><a href="#"><i class="fa fa-user-o"></i>Manager Account</a></li>                            
                                 </c:if>
                     </ul>
@@ -85,7 +85,7 @@
                         <div class="col-md-3">
                             <div class="header-logo">
                                 <a href="#" class="logo">
-                                    <img src="./img/logo.png" alt="">
+                                    <img src="" alt="">
                                 </a>
                             </div>
                         </div>
@@ -349,7 +349,7 @@
                             <h3 class="title"></h3>
                             <div class="section-nav">
                                 <ul class="section-tab-nav tab-nav">
-                                    
+
                                 </ul>
                             </div>
                         </div>
@@ -715,7 +715,7 @@
                             <div class="footer">
 
                                 <ul class="footer-links">
-                                  
+
                                 </ul>
                             </div>
                         </div>

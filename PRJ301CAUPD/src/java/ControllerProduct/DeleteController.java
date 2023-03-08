@@ -4,7 +4,6 @@
  */
 package ControllerProduct;
 
-import dal.CategoryDBContext;
 import dal.ProductsDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,17 +11,12 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import java.util.ArrayList;
-import model.Account;
-import model.Product;
-import model.category;
 
 /**
  *
  * @author vu
  */
-public class ManagerController extends HttpServlet {
+public class DeleteController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,19 +30,10 @@ public class ManagerController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession();
-        Account account = (Account) session.getAttribute("account");
-        int sell_id = account.getUid();
-
+        String product_id = request.getParameter("product_id");
         ProductsDBContext pdb = new ProductsDBContext();
-        ArrayList<Product> products = pdb.getAllProductBySellId(sell_id);
-        request.setAttribute("products", products);
-
-        CategoryDBContext dbc = new CategoryDBContext();
-        ArrayList<category> category = dbc.getAllCategory();
-        request.setAttribute("category", category);
-
-        request.getRequestDispatcher("managerproduct.jsp").forward(request, response);
+        pdb.delete(product_id);
+        response.sendRedirect("manager");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

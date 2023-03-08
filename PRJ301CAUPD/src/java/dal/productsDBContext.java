@@ -6,7 +6,10 @@ package dal;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import model.Product;
 
@@ -161,12 +164,12 @@ public class ProductsDBContext extends DBContext {
         return products;
 
     }
-    
-     public ArrayList<Product> getAllProductBySellId(int sell_id) {
+
+    public ArrayList<Product> getAllProductBySellId(int sell_id) {
         ArrayList<Product> products = new ArrayList<>();
 
         try {
-            String sql = "select * from Product where sell_id =?";
+            String sql = "select * from [products] where sell_id =?";
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setInt(1, sell_id);
             ResultSet rs = stm.executeQuery();
@@ -191,6 +194,52 @@ public class ProductsDBContext extends DBContext {
         }
         return products;
 
+    }
+
+    public void insert(int product_id, String product_name, String price,
+            String description, String image, String category, int sell_id) {
+        try {
+            String sql = "INSERT INTO [dbo].[products]\n"
+                    + "           ,[product_id]\n"
+                    + "           ,[product_name]\n"
+                    + "           ,[price]\n"
+                    + "           ,[description]\n"
+                    + "           ,[image]\n"
+                    + "           ,[cid]\n"
+                    + "           ,[sell_id])\n"
+                    + "     VALUES\n"
+                    + "           (?,?,?,?,?,?,?)";
+
+            PreparedStatement stm = connection.prepareStatement(sql);
+
+            stm.setInt(1, product_id);
+            stm.setString(2, product_name);
+            stm.setString(3, price);
+            stm.setString(5, description);
+            stm.setString(5, image);
+            stm.setString(6, category);
+            stm.setInt(7, sell_id);
+
+            stm.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductsDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void delete(String product_id) {
+        try {
+            String sql = "DELETE FROM [dbo].[products]\n"
+                    + "      WHERE [product_id] = ?";
+
+            PreparedStatement stm = connection.prepareStatement(sql);
+
+            stm.setString(1, product_id);
+            stm.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductsDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }
