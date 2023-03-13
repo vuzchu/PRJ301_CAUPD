@@ -10,7 +10,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import model.Product;
 
 /**
@@ -90,11 +89,11 @@ public class ProductsDBContext extends DBContext {
 
     }
 
-    public Product getProductByProductID(int product_id) {
+    public Product getProductByProductID(int product__id) {
 
         try {
-            String sql = "SELECT [product__id]\n"
-                    + "      ,[product_name]\n"
+            String sql = "SELECT [product_name]\n"
+                    + "      ,[product__id]\n"
                     + "      ,[price]\n"
                     + "      ,[description]\n"
                     + "      ,[image]\n"
@@ -102,11 +101,11 @@ public class ProductsDBContext extends DBContext {
                     + "  FROM [dbo].[products]\n"
                     + "where [product__id]=?";
             PreparedStatement stm = connection.prepareStatement(sql);
-            stm.setInt(1, product_id);
+            stm.setInt(1, product__id);
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {
                 Product s = new Product();
-                int product__id = rs.getInt("product__id");
+
                 String product_name = rs.getString("product_name");
                 Double price = rs.getDouble("price");
                 String description = rs.getString("description");
@@ -196,29 +195,27 @@ public class ProductsDBContext extends DBContext {
 
     }
 
-    public void insert(int product_id, String product_name, String price,
-            String description, String image, String category, int sell_id) {
+    public void insert(String product_name, int price,
+            String description, String image, int cid, int sell_id) {
         try {
             String sql = "INSERT INTO [dbo].[products]\n"
-                    + "           ,[product_id]\n"
-                    + "           ,[product_name]\n"
+                    + "           ([product_name]\n"
                     + "           ,[price]\n"
                     + "           ,[description]\n"
                     + "           ,[image]\n"
                     + "           ,[cid]\n"
                     + "           ,[sell_id])\n"
                     + "     VALUES\n"
-                    + "           (?,?,?,?,?,?,?)";
+                    + "           (?,?,?,?,?,?)";
 
             PreparedStatement stm = connection.prepareStatement(sql);
 
-            stm.setInt(1, product_id);
-            stm.setString(2, product_name);
-            stm.setString(3, price);
-            stm.setString(5, description);
-            stm.setString(5, image);
-            stm.setString(6, category);
-            stm.setInt(7, sell_id);
+            stm.setString(1, product_name);
+            stm.setInt(2, price);
+            stm.setString(3, description);
+            stm.setString(4, image);
+            stm.setInt(5, cid);
+            stm.setInt(6, sell_id);
 
             stm.executeUpdate();
 
@@ -227,14 +224,53 @@ public class ProductsDBContext extends DBContext {
         }
     }
 
-    public void delete(String product_id) {
+    public void delete(int product__id) {
         try {
             String sql = "DELETE FROM [dbo].[products]\n"
-                    + "      WHERE [product_id] = ?";
+                    + "      WHERE [product__id] = ?";
 
             PreparedStatement stm = connection.prepareStatement(sql);
 
-            stm.setString(1, product_id);
+            stm.setInt(1, product__id);
+            stm.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductsDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public static void main(String[] args) {
+        ProductsDBContext pdb = new ProductsDBContext();
+//        pdb.insert("tron1", 200, "tron2", "tron3", 1, 0);
+        pdb.delete(14);
+    }
+//    public static void main(String[] args) {
+//         ProductsDBContext pdb = new ProductsDBContext();
+//         ArrayList<Product> product = pdb.list();
+//         for (Product product1 : product) {
+//             System.out.println(product1.toString());
+//        }
+//    }
+
+    public void edit(Product p) {
+        try {
+            String sql = "UPDATE [dbo].[products]\n"
+                    + "   SET [product_name] = ?\n"
+                    + "      ,[price] = ?\n"
+                    + "      ,[description] = ? \n"
+                    + "      ,[image] = ? \n"
+                    + "      ,[cid] = ?\n"
+                    + "      ,[sell_id] = ?\n"
+                    + " WHERE product__id = ?";
+
+            PreparedStatement stm = connection.prepareStatement(sql);
+
+            stm.setString(1, p.getProduct_name());
+            stm.setDouble(2, p.getPrice());
+            stm.setString(3, p.getImage());
+            stm.setInt(4, p.getCid());
+            stm.setInt(5, p.getSell_id());
+
             stm.executeUpdate();
 
         } catch (SQLException ex) {

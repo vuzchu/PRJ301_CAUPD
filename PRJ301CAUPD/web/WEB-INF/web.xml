@@ -36,6 +36,26 @@
         <servlet-name>DeleteController</servlet-name>
         <servlet-class>ControllerProduct.DeleteController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ManagerAccountController</servlet-name>
+        <servlet-class>ControllerUser.ManagerAccountController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddControllerUser</servlet-name>
+        <servlet-class>ControllerUser.AddControllerUser</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteControllerUser</servlet-name>
+        <servlet-class>ControllerUser.DeleteControllerUser</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditController</servlet-name>
+        <servlet-class>ControllerProduct.EditController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoadController</servlet-name>
+        <servlet-class>ControllerProduct.LoadController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ListController</servlet-name>
         <url-pattern>/list</url-pattern>
@@ -74,6 +94,26 @@
     <servlet-mapping>
         <servlet-name>DeleteController</servlet-name>
         <url-pattern>/delete</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManagerAccountController</servlet-name>
+        <url-pattern>/managera</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddControllerUser</servlet-name>
+        <url-pattern>/adda</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteControllerUser</servlet-name>
+        <url-pattern>/deletea</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditController</servlet-name>
+        <url-pattern>/edit</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoadController</servlet-name>
+        <url-pattern>/loadproduct</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

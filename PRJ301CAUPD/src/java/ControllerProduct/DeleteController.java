@@ -30,9 +30,9 @@ public class DeleteController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String product_id = request.getParameter("product_id");
+        int product__id = Integer.parseInt(request.getParameter("product__id"));
         ProductsDBContext pdb = new ProductsDBContext();
-        pdb.delete(product_id);
+        pdb.delete(product__id);
         response.sendRedirect("manager");
     }
 

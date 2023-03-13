@@ -73,20 +73,19 @@ public class AddController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int product_id = Integer.parseInt(request.getParameter("product_id"));
+
         String product_name = request.getParameter("product_name");
         String price = request.getParameter("price");
         String description = request.getParameter("description");
         String image = request.getParameter("image");
-        String category = request.getParameter("category");
+        int category = Integer.parseInt(request.getParameter("category"));
 
         HttpSession session = request.getSession();
         Account account = (Account) session.getAttribute("account");
         int sell_id = account.getUid();
-     
 
         ProductsDBContext pdb = new ProductsDBContext();
-        pdb.insert(product_id, product_name, price, description, image, category, sell_id);
+        pdb.insert(product_name, sell_id, description, image, category, sell_id);
 
         response.sendRedirect("manager");
 
