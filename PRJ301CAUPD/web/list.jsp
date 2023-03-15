@@ -293,10 +293,10 @@
         <!-- /SECTION -->
 
         <!-- HOT DEAL SECTION -->
-        <div id="hot-deal" class="section">
-            <!-- container -->
+<!--        <div id="hot-deal" class="section">
+             container 
             <div class="container">
-                <!-- row -->
+                 row 
                 <div class="row">
                     <div class="col-md-12">
                         <div class="hot-deal">
@@ -332,10 +332,10 @@
                         </div>
                     </div>
                 </div>
-                <!-- /row -->
+                 /row 
             </div>
-            <!-- /container -->
-        </div>
+             /container 
+        </div>-->
         <!-- /HOT DEAL SECTION -->
 
         <!-- SECTION -->
@@ -419,10 +419,10 @@
         <!-- /SECTION -->
 
         <!-- SECTION -->
-        <div class="section">
-            <!-- container -->
+<!--        <div class="section">
+             container 
             <div class="container">
-                <!-- row -->
+                 row 
                 <div class="row">
                     <div class="col-md-4 col-xs-6">
                         <div class="section-title">
@@ -434,7 +434,7 @@
 
                         <div class="products-widget-slick" data-nav="#slick-nav-3">
                             <div>
-                                <!-- product widget -->
+                                 product widget 
                                 <c:forEach items="${products}" var="p" begin="1" end ="3">
                                     <div class="product-widget">
 
@@ -442,14 +442,14 @@
                                             <img src="${p.image}" alt="">
                                         </div>
                                         <div class="product-body">
-                                            <!--                                            <p class="product-category">Category</p>-->
+                                                                                        <p class="product-category">Category</p>
                                             <h3 class="product-name"><a href="#">${p.product_name}</a></h3>
                                             <h4 class="product-price">${p.price}</h4>
                                         </div>
 
                                     </div>
                                 </c:forEach>
-                                <!-- /product widget -->
+                                 /product widget 
 
 
 
@@ -472,7 +472,7 @@
                             <div>
 
 
-                                <!-- product widget -->
+                                 product widget 
                                 <c:forEach items="${products}" var="p" begin="1" end ="3">
                                     <div class="product-widget">
 
@@ -480,7 +480,7 @@
                                             <img src="${p.image}" alt="">
                                         </div>
                                         <div class="product-body">
-                                            <!--                                            <p class="product-category">Category</p>-->
+                                                                                        <p class="product-category">Category</p>
                                             <h3 class="product-name"><a href="#">${p.product_name}</a></h3>
                                             <h4 class="product-price">${p.price}</h4>
                                         </div>
@@ -506,7 +506,7 @@
 
                         <div class="products-widget-slick" data-nav="#slick-nav-5">
                             <div>
-                                <!-- product widget -->
+                                 product widget 
                                 <c:forEach items="${products}" var="p" begin="1" end ="3">
                                     <div class="product-widget">
 
@@ -514,23 +514,23 @@
                                             <img src="${p.image}" alt="">
                                         </div>
                                         <div class="product-body">
-                                            <!--                                            <p class="product-category">Category</p>-->
+                                                                                        <p class="product-category">Category</p>
                                             <h3 class="product-name"><a href="#">${p.product_name}</a></h3>
                                             <h4 class="product-price">${p.price}</h4>
                                         </div>
 
                                     </div>
                                 </c:forEach>
-                                <!-- product widget -->
+                                 product widget 
                             </div>
                         </div>
                     </div>
 
                 </div>
-                <!-- /row -->
+                 /row 
             </div>
-            <!-- /container -->
-        </div>
+             /container 
+        </div>-->
         <!-- /SECTION -->
 
         <!-- NEWSLETTER -->

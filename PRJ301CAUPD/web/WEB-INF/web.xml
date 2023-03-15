@@ -56,6 +56,10 @@
         <servlet-name>LoadController</servlet-name>
         <servlet-class>ControllerProduct.LoadController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SignUpController</servlet-name>
+        <servlet-class>ControllerUser.SignUpController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ListController</servlet-name>
         <url-pattern>/list</url-pattern>
@@ -114,6 +118,10 @@
     <servlet-mapping>
         <servlet-name>LoadController</servlet-name>
         <url-pattern>/loadproduct</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SignUpController</servlet-name>
+        <url-pattern>/signup</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

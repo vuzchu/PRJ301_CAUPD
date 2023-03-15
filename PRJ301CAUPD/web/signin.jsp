@@ -87,14 +87,14 @@
 
 
     <div class="container">
-        <form id="sign-up-form">
+        <form id="sign-up-form" method="post" action="signup">
             <h2>Đăng ký</h2>
             <div class="input-field">
-                <input type="text" placeholder="Tên đăng nhập" name="username" required>
+                <input type="text" placeholder="Tên đăng nhập" name="user" required>
             </div>
 
             <div class="input-field">
-                <input type="password" placeholder="Mật khẩu" name="password" required>
+                <input type="password" placeholder="Mật khẩu" name="pass" required>
             </div>
             <div class="input-field">
                 <input type="password" placeholder="Nhập lại mật khẩu" name="repass" required>
