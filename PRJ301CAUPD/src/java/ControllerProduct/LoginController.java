@@ -69,7 +69,6 @@ public class LoginController extends HttpServlet {
         if (account == null) {
 
             request.getRequestDispatcher("login.jsp").forward(request, response);
-
             return;
         } else {
             HttpSession session = request.getSession();

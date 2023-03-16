@@ -20,6 +20,7 @@ public class Product {
     private String image;
     private int cid;
     private int sell_id;
+    private int amount;
 
     public Product() {
     }
@@ -32,6 +33,25 @@ public class Product {
         this.image = image;
         this.cid = cid;
         this.sell_id = sell_id;
+    }
+
+    public Product(int product_id, String product_name, double price, String description, String image, int cid, int sell_id, int amount) {
+        this.product_id = product_id;
+        this.product_name = product_name;
+        this.price = price;
+        this.description = description;
+        this.image = image;
+        this.cid = cid;
+        this.sell_id = sell_id;
+        this.amount = amount;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 
     public int getProduct_id() {
@@ -92,7 +112,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" + "product_id=" + product_id + ", product_name=" + product_name + ", price=" + price + ", description=" + description + ", image=" + image + ", cid=" + cid + ", sell_id=" + sell_id + '}';
+        return "Product{" + "product_id=" + product_id + ", product_name=" + product_name + ", price=" + price + ", description=" + description + ", image=" + image + ", cid=" + cid + ", sell_id=" + sell_id + ", amount=" + amount + '}';
     }
 
 }

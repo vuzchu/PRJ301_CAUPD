@@ -15,9 +15,10 @@ import java.util.logging.Logger;
  * @author Ngo Tung Son
  */
 public class DBContext {
+
     protected Connection connection;
-    public DBContext()
-    {
+
+    public DBContext() {
         try {
             String username = "vucq";
             String password = "123456789";

@@ -58,7 +58,15 @@
     </servlet>
     <servlet>
         <servlet-name>SignUpController</servlet-name>
-        <servlet-class>ControllerUser.SignUpController</servlet-class>
+        <servlet-class>ControllerProduct.SignUpController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CartController</servlet-name>
+        <servlet-class>ControllerProduct.CartController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ShowCartController</servlet-name>
+        <servlet-class>ControllerProduct.ShowCartController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ListController</servlet-name>
@@ -122,6 +130,14 @@
     <servlet-mapping>
         <servlet-name>SignUpController</servlet-name>
         <url-pattern>/signup</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CartController</servlet-name>
+        <url-pattern>/cart</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowCartController</servlet-name>
+        <url-pattern>/show</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

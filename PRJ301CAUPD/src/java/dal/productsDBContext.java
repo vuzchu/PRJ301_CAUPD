@@ -127,6 +127,30 @@ public class ProductsDBContext extends DBContext {
 
     }
 
+    public Product getProduct(String txt) {
+        String sql = "select * from products where product__id = ?";
+
+        try {
+            PreparedStatement stm = connection.prepareStatement(sql);
+
+            stm.setString(1, txt);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                return new Product(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getInt(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getInt(6),
+                        rs.getInt(7),
+                        rs.getInt(8));
+
+            }
+        } catch (Exception e) {
+        }
+        return null;
+    }
+
     public ArrayList<Product> searchAllProductByProductName(String product_name) {
         ArrayList<Product> products = new ArrayList<>();
 
@@ -241,8 +265,9 @@ public class ProductsDBContext extends DBContext {
 
     public static void main(String[] args) {
         ProductsDBContext pdb = new ProductsDBContext();
-//        pdb.insert("tron1", 200, "tron2", "tron3", 1, 0);
-        pdb.delete(14);
+        Product product = pdb.getProduct("2");
+        System.out.println(product.toString());
+
     }
 //    public static void main(String[] args) {
 //         ProductsDBContext pdb = new ProductsDBContext();
@@ -267,9 +292,11 @@ public class ProductsDBContext extends DBContext {
 
             stm.setString(1, p.getProduct_name());
             stm.setDouble(2, p.getPrice());
-            stm.setString(3, p.getImage());
-            stm.setInt(4, p.getCid());
-            stm.setInt(5, p.getSell_id());
+            stm.setString(3, p.getDescription());
+            stm.setString(4, p.getImage());
+            stm.setInt(5, p.getCid());
+            stm.setInt(6, p.getSell_id());
+            stm.setInt(7, p.getProduct_id());
 
             stm.executeUpdate();
 

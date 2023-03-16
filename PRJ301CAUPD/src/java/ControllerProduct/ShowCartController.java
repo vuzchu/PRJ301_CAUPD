@@ -2,22 +2,25 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package ControllerUser;
+package ControllerProduct;
 
-import dal.AccountDBContext;
+import dal.ProductsDBContext;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.Account;
+import java.util.ArrayList;
+import java.util.List;
+import model.Product;
 
 /**
  *
  * @author vu
  */
-public class SignUpController extends HttpServlet {
+public class ShowCartController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,24 +34,38 @@ public class SignUpController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String user = request.getParameter("user");
-        String pass = request.getParameter("pass");
-        String re_pass = request.getParameter("repass");
-        if (!pass.equals(re_pass)) {
-            response.sendRedirect("Login.jsp");
-        } else {
-            AccountDBContext adb = new AccountDBContext();
-            Account a = adb.checkAccountExist(user);
-            if (a == null) {
-                //dc signup
-                adb.singup(user, pass);
-                response.sendRedirect("list");
-            } else {
-                //day ve trang login.jsp
-                response.sendRedirect("Login.jsp");
+        Cookie arr[] = request.getCookies();
+        PrintWriter out = response.getWriter();
+        List<Product> list = new ArrayList<>();
+        ProductsDBContext pdb = new ProductsDBContext();
+        for (Cookie o : arr) {
+            if (o.getName().equals("id")) {
+                String txt[] = o.getValue().split(",");
+                for (String s : txt) {
+                    list.add(pdb.getProduct(s));
+                }
             }
         }
-        //sign up
+        for (int i = 0; i < list.size(); i++) {
+            int count = 1;
+            for (int j = i + 1; j < list.size(); j++) {
+                if (list.get(i).getProduct_id() == list.get(j).getProduct_id()) {
+                    count++;
+                    list.remove(j);
+                    j--;
+                    list.get(i).setAmount(count);
+                }
+            }
+        }
+        double total = 0;
+        for (Product o : list) {
+            total = total + o.getAmount() * o.getPrice();
+        }
+        request.setAttribute("list", list);
+        request.setAttribute("total", total);
+        request.setAttribute("vat", 0.1 * total);
+        request.setAttribute("sum", 1.1 * total);
+        request.getRequestDispatcher("Cart.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

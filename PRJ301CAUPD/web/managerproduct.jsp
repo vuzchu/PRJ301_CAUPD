@@ -249,7 +249,7 @@
             $(document).ready(function () {
                 // Activate tooltip
                 $('[data-toggle="tooltip"]').tooltip();
-
+                
                 // Select/Deselect checkboxes
                 var checkbox = $('table tbody input[type="checkbox"]');
                 $("#selectAll").click(function () {
@@ -348,18 +348,18 @@
                             </c:forEach>
                         </tbody>
                     </table>
-                    <!--                    <div class="clearfix">
-                                            <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-                                            <ul class="pagination">
-                                                <li class="page-item disabled"><a href="#">Previous</a></li>
-                                                <li class="page-item"><a href="#" class="page-link">1</a></li>
-                                                <li class="page-item"><a href="#" class="page-link">2</a></li>
-                                                <li class="page-item active"><a href="#" class="page-link">3</a></li>
-                                                <li class="page-item"><a href="#" class="page-link">4</a></li>
-                                                <li class="page-item"><a href="#" class="page-link">5</a></li>
-                                                <li class="page-item"><a href="#" class="page-link">Next</a></li>
-                                            </ul>
-                                        </div>-->
+                    <div class="clearfix">
+                        <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+                        <ul class="pagination">
+                            <li class="page-item disabled"><a href="#">Previous</a></li>
+                            <li class="page-item"><a href="#" class="page-link">1</a></li>
+                            <li class="page-item"><a href="#" class="page-link">2</a></li>
+                            <li class="page-item active"><a href="#" class="page-link">3</a></li>
+                            <li class="page-item"><a href="#" class="page-link">4</a></li>
+                            <li class="page-item"><a href="#" class="page-link">5</a></li>
+                            <li class="page-item"><a href="#" class="page-link">Next</a></li>
+                        </ul>
+                    </div>
                 </div>
                 <a href="#"><button type="button" class="btn btn-primary">Back to home</button>
 
@@ -431,7 +431,7 @@
                     </div>
                 </div>
             </div>
-        </a>
+        </div><!-- comment -->
         <script src="js/manager.js" type="text/javascript"></script>
-</body>
+    </body>
 </html>
