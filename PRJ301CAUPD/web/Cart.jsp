@@ -32,7 +32,25 @@
     </head>
 
     <body>
+        <nav id="navigation">
+            <!-- container -->
+            <div class="container">
+                <!-- responsive-nav -->
+                <div id="responsive-nav">
+                    <!-- NAV -->
+                    <ul class="main-nav nav navbar-nav">
+                        <li class="active"><a href="list">Home</a></li>
+                            <c:forEach items="${category}" var="c">
 
+                            <li><a href="category?cid=${c.cid}">${c.cname}</a></li>
+                            </c:forEach>
+                    </ul>
+                    <!-- /NAV -->
+                </div>
+                <!-- /responsive-nav -->
+            </div>
+            <!-- /container -->
+        </nav>
         <div class="shopping-cart">
             <div class="px-4 px-lg-0">
 

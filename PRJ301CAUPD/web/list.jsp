@@ -123,41 +123,41 @@
                                     <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                                         <i class="fa fa-shopping-cart"></i>
                                         <span>Your Cart</span>
-                                        <div class="qty">3</div>
+                                        <div class="qty"></div>
                                     </a>
-                                    <div class="cart-dropdown">
-                                        <div class="cart-list">
-                                            <div class="product-widget">
-                                                <div class="product-img">
-                                                    <img src="./img/product01.png" alt="">
-                                                </div>
-                                                <div class="product-body">
-                                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                                    <h4 class="product-price"><span class="qty">1x</span>$980.00</h4>
-                                                </div>
-                                                <button class="delete"><i class="fa fa-close"></i></button>
-                                            </div>
-
-                                            <div class="product-widget">
-                                                <div class="product-img">
-                                                    <img src="./img/product02.png" alt="">
-                                                </div>
-                                                <div class="product-body">
-                                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                                    <h4 class="product-price"><span class="qty">3x</span>$980.00</h4>
-                                                </div>
-                                                <button class="delete"><i class="fa fa-close"></i></button>
-                                            </div>
-                                        </div>
-                                        <div class="cart-summary">
-                                            <small>3 Item(s) selected</small>
-                                            <h5>SUBTOTAL: $2940.00</h5>
-                                        </div>
-                                        <div class="cart-btns">
-                                            <a href="#">View Cart</a>
-                                            <a href="#">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
-                                        </div>
-                                    </div>
+                                    <!--                                    <div class="cart-dropdown">
+                                                                            <div class="cart-list">
+                                                                                <div class="product-widget">
+                                                                                    <div class="product-img">
+                                                                                        <img src="./img/product01.png" alt="">
+                                                                                    </div>
+                                                                                    <div class="product-body">
+                                                                                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
+                                                                                        <h4 class="product-price"><span class="qty">1x</span>$980.00</h4>
+                                                                                    </div>
+                                                                                    <button class="delete"><i class="fa fa-close"></i></button>
+                                                                                </div>
+                                    
+                                                                                <div class="product-widget">
+                                                                                    <div class="product-img">
+                                                                                        <img src="./img/product02.png" alt="">
+                                                                                    </div>
+                                                                                    <div class="product-body">
+                                                                                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
+                                                                                        <h4 class="product-price"><span class="qty">3x</span>$980.00</h4>
+                                                                                    </div>
+                                                                                    <button class="delete"><i class="fa fa-close"></i></button>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="cart-summary">
+                                                                                <small>3 Item(s) selected</small>
+                                                                                <h5>SUBTOTAL: $2940.00</h5>
+                                                                            </div>
+                                                                            <div class="cart-btns">
+                                                                                <a href="#">View Cart</a>
+                                                                                <a href="#">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
+                                                                            </div>
+                                                                        </div>-->
                                 </div>
                                 <!-- /Cart -->
 
@@ -248,20 +248,20 @@
                                                 <div class="product-body">
                                                     <p class="product-category"></p>
 
-                                                    <h3 class="product-name"><a href="detail?product__id=${p.product_id}" aria-label="${p.product_name}">${p.product_name}</a></h3>
+                                                    <h3 class="product-name"><a  aria-label="${p.product_name}">${p.product_name}</a></h3>
 
                                                     <h4 class="product-price">${p.price}</h4>
-                                                    <div class="product-rating">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                    </div>
+
                                                     <div class="product-btns">
                                                         <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
                                                         <!--													<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>-->
-                                                        <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+
+                                                        <button class="quick-view"><i class="fa fa-eye">
+                                                                <a href="detail?product__id=${p.product_id}">
+                                                            </i><span class="tooltipp">quick view</span>
+                                                            </a>
+                                                        </button>
+
                                                     </div>
                                                 </div>
                                                 <div class="add-to-cart">
@@ -381,13 +381,13 @@
                                                     <h3 class="product-name"><a href="detail?product_id=${p.product_id}" aria-label="${p.product_name}">${p.product_name}</a></h3>
 
                                                     <h4 class="product-price">${p.price}</h4>
-                                                    <div class="product-rating">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                    </div>
+                                                    <!--                                                    <div class="product-rating">
+                                                                                                            <i class="fa fa-star"></i>
+                                                                                                            <i class="fa fa-star"></i>
+                                                                                                            <i class="fa fa-star"></i>
+                                                                                                            <i class="fa fa-star"></i>
+                                                                                                            <i class="fa fa-star"></i>
+                                                                                                        </div>-->
                                                     <div class="product-btns">
                                                         <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
                                                         <!--													<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>-->

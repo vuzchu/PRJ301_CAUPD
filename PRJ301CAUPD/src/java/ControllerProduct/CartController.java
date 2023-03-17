@@ -49,7 +49,7 @@ public class CartController extends HttpServlet {
         } else {
             txt = txt + "," + id;
         }
-        Cookie c = new Cookie("id", txt);
+        Cookie c = new Cookie("id ", txt);
         c.setMaxAge(60 * 60 * 24);
         response.addCookie(c);
         response.sendRedirect("show");
